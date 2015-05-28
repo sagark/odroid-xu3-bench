@@ -19,6 +19,10 @@ CPU0_FREQ=$((`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`/1000))"
 CPU1_FREQ=$((`cat /sys/devices/system/cpu/cpu1/cpufreq/scaling_cur_freq`/1000))" Mhz"
 CPU2_FREQ=$((`cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_cur_freq`/1000))" Mhz"
 CPU3_FREQ=$((`cat /sys/devices/system/cpu/cpu3/cpufreq/scaling_cur_freq`/1000))" Mhz"
+CPU4_FREQ=$((`cat /sys/devices/system/cpu/cpu4/cpufreq/scaling_cur_freq`/1000))" Mhz"
+CPU5_FREQ=$((`cat /sys/devices/system/cpu/cpu5/cpufreq/scaling_cur_freq`/1000))" Mhz"
+CPU6_FREQ=$((`cat /sys/devices/system/cpu/cpu6/cpufreq/scaling_cur_freq`/1000))" Mhz"
+CPU7_FREQ=$((`cat /sys/devices/system/cpu/cpu7/cpufreq/scaling_cur_freq`/1000))" Mhz"
 
 # CPU Governor
 CPU_GOVERNOR=`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor`
@@ -26,13 +30,14 @@ CPU_GOVERNOR=`cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor`
 # Note Configuration for CPU Core Temperature
 # This file is written on the following format:
 # CPU0 CPU1 CPU2 CPU3
-#TMU_FILE=`cat /sys/devices/platform/exynos5-tmu/temp`
+TMU_FILE=`cat /sys/devices/10060000.tmu/temp`
 
 # We need to slip those in nice variables...
-#CPU0_TEMP=`echo $TMU_FILE | awk '{printf $1}'`"C"
-#CPU1_TEMP=`echo $TMU_FILE | awk '{printf $2}'`"C"
-#CPU2_TEMP=`echo $TMU_FILE | awk '{printf $3}'`"C"
-#CPU3_TEMP=`echo $TMU_FILE | awk '{printf $4}'`"C"
+CPU0_TEMP=$((`echo $TMU_FILE | awk '{printf $3}'`/1000))"C"
+CPU1_TEMP=$((`echo $TMU_FILE | awk '{printf $6}'`/1000))"C"
+CPU2_TEMP=$((`echo $TMU_FILE | awk '{printf $9}'`/1000))"C"
+CPU3_TEMP=$((`echo $TMU_FILE | awk '{printf $12}'`/1000))"C"
+GPU_TEMP=$((`echo $TMU_FILE | awk '{printf $15}'`/1000))"C"
 
 # Now lets get CPU Power Comsumption
 # Letter Values are:
@@ -60,23 +65,29 @@ MEM_W=`cat /sys/bus/i2c/drivers/INA231/3-0041/sensor_W`"W"
 GPU_V=`cat /sys/bus/i2c/drivers/INA231/3-0044/sensor_V`"V"
 GPU_A=`cat /sys/bus/i2c/drivers/INA231/3-0044/sensor_A`"A"
 GPU_W=`cat /sys/bus/i2c/drivers/INA231/3-0044/sensor_W`"W"
-#GPU_FREQ=`cat /sys/module/pvrsrvkm/parameters/sgx_gpu_clk`" Mhz"
+GPU_FREQ=`cat /sys/devices/11800000.mali/clock`" Mhz"
 
 # ---------- FAN Speed ------------- # 
-#FAN_SPEED=$((`cat /sys/bus/platform/devices/odroidxu-fan/pwm_duty` * 100 / 255))"%"
+FAN_SPEED=$((`cat /sys/bus/platform/devices/odroid_fan.15/pwm_duty` * 100 / 255))"%"
 
 # ---------- DRAW Screen ----------- #
 
-echo "CPU0: $CPU0_FREQ"
-echo "CPU1: $CPU1_FREQ"
-echo "CPU2: $CPU2_FREQ"
-echo "CPU3: $CPU3_FREQ"
+echo "A7  CPU0: $CPU0_FREQ"
+echo "A7  CPU1: $CPU1_FREQ"
+echo "A7  CPU2: $CPU2_FREQ"
+echo "A7  CPU3: $CPU3_FREQ"
+echo "A15 CPU4: $CPU4_FREQ $CPU0_TEMP"
+echo "A15 CPU5: $CPU5_FREQ $CPU1_TEMP"
+echo "A15 CPU6: $CPU6_FREQ $CPU2_TEMP"
+echo "A15 CPU7: $CPU7_FREQ $CPU3_TEMP"
+
 echo "Governor: $CPU_GOVERNOR"
-#echo "Fan Speed: $FAN_SPEED"
+echo "Fan Speed: $FAN_SPEED"
 echo "A15 Power: $A15_V, $A15_A, $A15_W"
 echo "A7 Power: $A7_V, $A7_A, $A7_W"
 echo "MEM Power: $MEM_V, $MEM_A, $MEM_W"
 echo "GPU Power: $GPU_V, $GPU_A, $GPU_W @ $GPU_FREQ"
+echo "GPU Temp: $GPU_TEMP"
 
 sleep 3
 clear
