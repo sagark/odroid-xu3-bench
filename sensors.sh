@@ -108,5 +108,4 @@ echo -n "$GPU_FREQ, "
 echo "$GPU_TEMP"
 
 sleep 0.3
-clear
 done
