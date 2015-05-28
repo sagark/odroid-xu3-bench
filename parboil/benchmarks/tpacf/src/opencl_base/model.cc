@@ -12,6 +12,7 @@
 #include <strings.h>
 #include <math.h>
 #include <parboil.h>
+#include <stdlib.h>
 
 #include "model.h"
 
