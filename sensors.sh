@@ -89,6 +89,6 @@ echo "MEM Power: $MEM_V, $MEM_A, $MEM_W"
 echo "GPU Power: $GPU_V, $GPU_A, $GPU_W @ $GPU_FREQ"
 echo "GPU Temp: $GPU_TEMP"
 
-sleep 3
+sleep 0.3
 clear
 done
