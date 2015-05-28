@@ -1,0 +1,110 @@
+bfs -------------------------------
+Resolving OpenCL library...
+	libOpenCL.so => /usr/lib/libOpenCL.so (0xb5df2000)
+Starting GPU kernel
+GPU kernel done
+IO        : 6.607475
+Kernel    : 2.939684
+Copy      : 0.414645
+Driver    : 2.939695
+CPU/Kernel Overlap: 2.939733
+Timer Wall Time: 9.962032
+Pass
+Parboil parallel benchmark suite, version 0.2
+
+stencil -------------------------------
+Resolving OpenCL library...
+	libOpenCL.so => /usr/lib/libOpenCL.so (0xb5de5000)
+OpenCL accelerated 7 points stencil codes****
+Author: Li-Wen Chang <lchang20@illinois.edu>
+IO        : 4.307323
+Kernel    : 8.997255
+Copy      : 0.372607
+Driver    : 9.000194
+Compute   : 0.152056
+CPU/Kernel Overlap: 9.000238
+Timer Wall Time: 13.832414
+Pass
+Parboil parallel benchmark suite, version 0.2
+
+cutcp -------------------------------
+Resolving OpenCL library...
+	libOpenCL.so => /usr/lib/libOpenCL.so (0xb5dd2000)
+read 96603 atoms from file '/home/odroid/odroid-xu3-bench/parboil/datasets/cutcp/large/input/watbox.sl100.pqr'
+extent of domain is:
+  minimum -49.998 -49.997 -49.996
+  maximum 50 49.99 49.971
+padding domain by 0.5 Angstroms
+domain lengths are 100.998 by 100.987 by 100.967
+
+Invoking OpenCL kernel on 26 region planes...
+  computing plane 0  computing plane 1  computing plane 2  computing plane 3  computing plane 4  computing plane 5  computing plane 6  computing plane 7  computing plane 8  computing plane 9  computing plane 10  computing plane 11  computing plane 12  computing plane 13  computing plane 14  computing plane 15  computing plane 16  computing plane 17  computing plane 18  computing plane 19  computing plane 20  computing plane 21  computing plane 22  computing plane 23  computing plane 24  computing plane 25Finished OpenCL kernel calls                        
+computing extra atoms on CPU
+
+
+IO        : 0.440782
+Kernel    : 33.780391
+Copy      : 0.445471
+Driver    : 33.780765
+Compute   : 2.914283
+CPU/Kernel Overlap: 33.780796
+Timer Wall Time: 37.581535
+Pass
+Parboil parallel benchmark suite, version 0.2
+
+spmv -------------------------------
+Resolving OpenCL library...
+	libOpenCL.so => /usr/lib/libOpenCL.so (0xb5dca000)
+CUDA accelerated sparse matrix vector multiplication****
+Original version by Li-Wen Chang <lchang20@illinois.edu> and Shengzhao Wu<wu14@illinois.edu>
+This version maintained by Chris Rodrigues  ***********
+Converting COO to JDS format (146689x146689)
+3636649 matrix entries, warp size = 32, row padding align = 1, pack size = 1
+
+Padding data....146720 rows, 4585 groups
+Allocating data space: 3637664 entries (0.027903% padding)
+Finished converting.
+JDS format has 146720 columns, 49 rows.
+nz_count_len = 4585
+IO        : 7.043459
+Kernel    : 0.687159
+Copy      : 0.178103
+Driver    : 0.688519
+Compute   : 0.104741
+CPU/Kernel Overlap: 0.688555
+Timer Wall Time: 8.015074
+Pass
+Parboil parallel benchmark suite, version 0.2
+
+sgemm -------------------------------
+Resolving OpenCL library...
+	libOpenCL.so => /usr/lib/libOpenCL.so (0xb5e78000)
+GFLOPs = 3.87021
+IO        : 6.924343
+Kernel    : 0.554333
+Copy      : 0.065243
+Driver    : 0.554607
+Compute   : 0.052280
+CPU/Kernel Overlap: 0.554655
+Timer Wall Time: 7.695934
+Pass
+Parboil parallel benchmark suite, version 0.2
+
+mri-q -------------------------------
+Resolving OpenCL library...
+	libOpenCL.so => /usr/lib/libOpenCL.so (0xb5e54000)
+262144 pixels in output; 2048 samples in trajectory; using 2048 samples
+Grid: 65536, Block: 64
+1225615886
+Grid: 65536, Block: 64
+1228768872
+IO        : 0.042678
+Kernel    : 2.464534
+Copy      : 0.054225
+Driver    : 2.464788
+Compute   : 0.194044
+CPU/Kernel Overlap: 2.464888
+Timer Wall Time: 2.756075
+Pass
+Parboil parallel benchmark suite, version 0.2
+
